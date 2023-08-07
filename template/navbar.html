@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="{% url 'ecommerce_app:allProductCategory' %}">Home</a>
+                </li>
+                <!--        <li class="nav-item">-->
+                <!--          <a class="nav-link" href="#">Link</a>-->
+                <!--        </li>-->
+                <li class="nav-item dropdown {% if 'ecommerce_app' in request.path %} active {% endif %}">
+                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                       id="navbarDropdown" role="button">
+                        Shop
+                    </a>
+                    <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
+
+                        <li><a class="dropdown-item" href="{% url 'ecommerce_app:allProductCategory' %}">All
+                            Products</a></li>
+                        {% for cat in links %}
+                        <li><a class="dropdown-item" href="{{cat.get_url}}">{{cat.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="nav-item">
+
+                    <a class="nav-link" href="{% url 'cart:cart_details' %}"><i class="fa-solid fa-cart-shopping"></i>({{item_count}})</a>
+                </li>
+            </ul>
+            <form class="d-flex" method="get" action="{% url 'search_app:searchResult' %}">
+                {% csrf_token %}
+                <input aria-label="Search" class="form-control me-2" placeholder="Search" name="q" type="search">
+                <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+</nav>
