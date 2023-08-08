@@ -1,5 +1,6 @@
 body{
     font-family: 'Josefin Sans', sans-serif;
+    position:relative;
 }
 .nav-item{
     letter-spacing:.1rem;
@@ -14,6 +15,9 @@ body{
 .footer{
     background-color:#f0f2f5;
     height:100px;
+    position:absolute;
+    bottom:0;
+    width:100%;
 }
 .footer p{
     font-size:15px;

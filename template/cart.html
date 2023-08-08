@@ -28,7 +28,7 @@ Shopping Cart - Home Shop
             <tbody>
                 <tr>
                     <td>
-                        <a href="cart_item.product.get_absolute_url"><img src="{{cart_item.product.image.url}}" class="float-left rounded cart_image"></a>
+                        <a href="{% url 'cart:cart_details' %}"><img src="{{cart_item.product.image.url}}" class="float-left rounded cart_image"></a>
                     </td>
                     <td class="text-left">
                         {{cart_item.product.name}}<br>
